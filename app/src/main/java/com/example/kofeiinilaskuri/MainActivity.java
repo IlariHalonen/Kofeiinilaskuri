@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private int kofeiini = 0;
     private int juoma = 0;
 
-
+//mitä heleeeeeeeeeeeee
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
