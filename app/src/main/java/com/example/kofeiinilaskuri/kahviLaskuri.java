@@ -11,8 +11,6 @@ public class kahviLaskuri extends AppCompatActivity {
 
     TextView textView;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
