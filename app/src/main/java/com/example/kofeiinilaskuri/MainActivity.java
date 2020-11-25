@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Button hae = (Button) findViewById(R.id.hae);
         Button kahvi = (Button) findViewById(R.id.kahviNappi);
 
-
+// moi toimisko
         tallenna.setOnClickListener(v -> {
             SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
