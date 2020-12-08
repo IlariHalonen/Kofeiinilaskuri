@@ -163,4 +163,16 @@
         app:layout_constraintTop_toBottomOf="@+id/juomanMaara"
         app:layout_constraintVertical_bias="0.199" />
 
+    <ImageView
+        android:id="@+id/profileIcon"
+        android:layout_width="78dp"
+        android:layout_height="81dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scanner"
+        app:layout_constraintVertical_bias="0.809"
+        app:srcCompat="@drawable/usericon" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
