@@ -13,15 +13,13 @@ public class Energiajuoma {
     }
 
 
-    public String getName() {
+    public String getNimi() {
         return this.nimi;
     }
 
-    public float getCaffeine() {
-        return this.kofeiininMaara;
-    }
+    public float getKofeiininMaara() { return this.kofeiininMaara; }
 
-    public String getBarcode() { return this.viivakoodi; }
+    public String getViivakoodi() { return this.viivakoodi; }
 
 
 
