@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     String currentday = new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime());
     private String dayOfTheWeek = currentday;
     private final String AVAIN = "com.example.kofeiinilaskuri.PROFIILI_KEY";
+    private String liite = "ml";
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -124,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int kahviSelected = (int)parent.getItemIdAtPosition(position);
                 kahviIndex = kahviSelected;
+                juomanMaara.setHint(tarkistaLiite(kahviIndex));
             }
 
             @Override
@@ -143,8 +145,9 @@ public class MainActivity extends AppCompatActivity {
     private void Update() {
         TextView kofeiiniYht = (TextView) findViewById(R.id.yhtKofeiini);
         TextView juomaYht = (TextView) findViewById(R.id.yhtMaara);
+        gOrMl();
         kofeiiniYht.setText(String.valueOf(kofeiini) + " mg.");
-        juomaYht.setText(String.valueOf(juoma) + " ml tai g.");
+        juomaYht.setText(String.valueOf(juoma) + liite);
         progrBar.setProgress(procent(day));
         text.setText(procent(day) + "%");
     }
@@ -215,6 +218,23 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+    public void gOrMl(){
+        String index = GlobalModel.getInstance().getKahvi(kahviIndex).getName();
+        if(index.contains("suklaa")){
+            liite = " g";
+        } else {
+            liite = " ml";
+        }
+
+
+    }
+    public String tarkistaLiite(int index){
+        if (index == 3 || index == 4){
+            return "g";
+        } else {
+            return "ml";
+        }
     }
 
 
