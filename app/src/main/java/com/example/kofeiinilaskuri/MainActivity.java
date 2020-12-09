@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         Button tallenna = (Button) findViewById(R.id.tallenna);
         Button scanner = (Button) findViewById(R.id.scanner);
         ImageView profileButton = (ImageView) findViewById(R.id.profileIcon);
+        ImageView infoButton = (ImageView) findViewById(R.id.infoIcon);
 
         Spinner kahviSpinner = findViewById(R.id.kahviSpinner);
 
@@ -89,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openProfile();
+
+            }
+        });
+
+        infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openInfo();
 
             }
         });
@@ -221,6 +230,10 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("EXTRA_PROG",prog);
         intent.putExtra("EXTRA_PERC",perc);
         intent.putExtra("EXTRA_CAF",String.valueOf(day));
+        startActivity(intent);
+    }
+    private void openInfo(){
+        Intent intent = new Intent(this, Info.class);
         startActivity(intent);
     }
 
