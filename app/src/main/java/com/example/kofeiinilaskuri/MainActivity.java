@@ -208,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
             showToast();
         }
     }
+    /*Shows alert toast*/
     private void showToast(){
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.custom_toast,(ViewGroup) findViewById(R.id.toast_layout));
