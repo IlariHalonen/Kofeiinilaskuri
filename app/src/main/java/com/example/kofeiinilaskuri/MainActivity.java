@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         Button scanner = (Button) findViewById(R.id.scanner);
         ImageView profileButton = (ImageView) findViewById(R.id.profileIcon);
         ImageView infoButton = (ImageView) findViewById(R.id.infoIcon);
-
         Spinner kahviSpinner = findViewById(R.id.kahviSpinner);
 
         //Connection between ArrayList with data and UI element (dropdown list of items with caffeine)
@@ -93,11 +92,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        //info icon is pressed
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openInfo();
+                openInfo(); //Info activity opens
 
             }
         });
@@ -224,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, barcodeReader.class);
         startActivity(intent);
     }
+    /*starts new activity when profile icon is pressed*/
     private void openProfile(){
         int prog = progrBar.getProgress();
         String perc = text.getText().toString();
@@ -233,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("EXTRA_CAF",String.valueOf(day));
         startActivity(intent);
     }
+    /*starts new activity (webview) when info icon is pressed*/
     private void openInfo(){
         Intent intent = new Intent(this, Info.class);
         startActivity(intent);
