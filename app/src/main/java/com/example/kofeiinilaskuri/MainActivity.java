@@ -8,7 +8,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -192,6 +195,18 @@ public class MainActivity extends AppCompatActivity {
         juomaYht.setText(String.valueOf(juoma) + liite);
         progrBar.setProgress(procent(day));
         text.setText(procent(day) + "%");
+        if (day > 400){
+            showToast();
+        }
+    }
+    private void showToast(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast,(ViewGroup) findViewById(R.id.toast_layout));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER_VERTICAL,0,0);
+        toast.setDuration((Toast.LENGTH_SHORT));
+        toast.setView(layout);
+        toast.show();
     }
 
     /*starts new activity (barcode scanner)*/
@@ -255,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
         sp.edit().remove("allKofeiini");
     }
 
-
+    /*clears the data*/
     private void checkFirstTime(){
         SharedPreferences sp = getSharedPreferences(AVAIN,Context.MODE_PRIVATE);
         boolean first = sp.getBoolean("FIRST_TIME", true);
@@ -279,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public String tarkistaLiite(int index){
-        if (index == 3 || index == 4){
+        if (index == 6 || index == 7){
             return "g";
         } else {
             return "ml";
