@@ -156,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
     private void openProfile(){
         int prog = progrBar.getProgress();
         String perc = text.getText().toString();
+        int kofYht= kofeiini;
         Intent intent = new Intent(this, Profiili.class);
         intent.putExtra("EXTRA_PROG",prog);
         intent.putExtra("EXTRA_PERC",perc);
