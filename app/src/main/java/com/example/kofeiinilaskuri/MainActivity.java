@@ -302,6 +302,8 @@ public class MainActivity extends AppCompatActivity {
         String index = GlobalModel.getInstance().getKahvi(kahviIndex).getName();
         if(index.contains("suklaa")){
             liite = " g";
+        } else if(index.contains("tabletti")) {
+            liite = " kpl";
         } else {
             liite = " ml";
         }
@@ -311,6 +313,8 @@ public class MainActivity extends AppCompatActivity {
     public String tarkistaLiite(int index){
         if (index == 6 || index == 7){
             return "g";
+        } else if(index == 10) {
+            return "kpl";
         } else {
             return "ml";
         }
