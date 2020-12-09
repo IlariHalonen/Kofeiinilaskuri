@@ -3,17 +3,13 @@ package com.example.kofeiinilaskuri;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.service.controls.templates.TemperatureControlTemplate;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Switch;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class UserConfig extends AppCompatActivity {
     private final String AVAIN = "com.example.kofeiinilaskuri.PROFIILI_KEY";
@@ -27,6 +23,11 @@ public class UserConfig extends AppCompatActivity {
         editor.putBoolean("FIRST_TIME", false).commit();
 
         Button namiska = (Button) findViewById(R.id.button_valmis);
+
+
+
+
+
         namiska.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,11 +59,13 @@ public class UserConfig extends AppCompatActivity {
     private void loadMain(){
         EditText kayttajanNimi = (EditText) findViewById(R.id.kayttajanNimi);
         EditText kayttajanIka = (EditText) findViewById(R.id.kayttajanIka);
-
+        Switch MN = (Switch) findViewById(R.id.miesNainen);
+        boolean SwitchState = MN.isChecked();
         SharedPreferences sp = getSharedPreferences(AVAIN,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         String nimi = kayttajanNimi.getText().toString();
         int ika =  Integer.parseInt(kayttajanIka.getText().toString());
+        editor.putBoolean("SUKUPUOLI", SwitchState);
         editor.putString("NIMI", nimi);
         editor.putInt("IKA",ika);
         editor.putBoolean("FIRST_TIME", false);
