@@ -108,11 +108,11 @@ public class MainActivity extends AppCompatActivity {
                 kofeiiniFloat = GlobalModel.getInstance().getKahvi(kofeiiniIndex).getCaffeine(); //receives the index of caffeine of selected product
                 juoma = Integer.parseInt(juomanMaara.getText().toString()); //receives portion size
                 kofeiini = kofeiiniCalculation(kofeiiniFloat, juoma); //receives amount of caffeine
-                allKofeiini = allKofeiini + kofeiini; //calculates total amount of consumed caffeine
+                day = day + kofeiini; //calculates total amount of consumed caffeine
 
                 //saving data
                 editor.putInt("kofeiini", kofeiini);
-                editor.putInt("allKofeiini", allKofeiini);
+                editor.putInt("allKofeiini", day);
                 editor.putInt("maara", juoma);
                 editor.putString("currentDay", currentday);
                 editor.apply();
@@ -129,9 +129,9 @@ public class MainActivity extends AppCompatActivity {
                 kofeiiniFloat = GlobalModel.getInstance().getKahvi(kahviIndex).getCaffeine();
                 juoma = Integer.parseInt(juomanMaara.getText().toString());
                 kofeiini = kofeiiniCalculation(kofeiiniFloat, juoma);
-                allKofeiini = allKofeiini + kofeiini;
+                day = day + kofeiini;
                 editor.putInt("kofeiini", kofeiini);
-                editor.putInt("allKofeiini", allKofeiini);
+                editor.putInt("allKofeiini", day);
                 editor.putInt("maara", juoma);
                 editor.putString("currentDay", currentday);
                 editor.apply();
@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
         kofeiini = sp.getInt("kofeiini", 0);
         juoma = sp.getInt("maara", 0);
-        allKofeiini = sp.getInt("allKofeiini", 0);
+        day = sp.getInt("allKofeiini", 0);
         Update();
     }
 
