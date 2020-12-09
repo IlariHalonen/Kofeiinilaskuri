@@ -15,12 +15,12 @@ class GlobalModel {
 
         kahvi = new ArrayList<Coffee>();
 
-        kahvi.add(new Coffee("Black coffee", (float) 0.6, "4056489175803"));
-        kahvi.add(new Coffee("Coffee with milk", (float)0.4, "070177084813"));
-        kahvi.add(new Coffee("Energy drink", (float)0.54,"6420101884201"));
-        kahvi.add(new Coffee("Milk chocolate", (float)0.12,"6420101884202"));
-        kahvi.add(new Coffee("Dark chocolate", (float)0.7,"6420101884203"));
-        kahvi.add(new Coffee("Black tea", (float)0.2,"6420101884204"));
+        kahvi.add(new Coffee("Musta kahvi", (float) 0.6, "4056489175803"));
+        kahvi.add(new Coffee("Kahvi maidolla", (float)0.4, "070177084813"));
+        kahvi.add(new Coffee("Energiajuoma", (float)0.54,"6420101884201"));
+        kahvi.add(new Coffee("Maitosuklaa", (float)0.12,"6420101884202"));
+        kahvi.add(new Coffee("Tumma suklaa", (float)0.7,"6420101884203"));
+        kahvi.add(new Coffee("Musta tee", (float)0.2,"6420101884204"));
 
     }
 

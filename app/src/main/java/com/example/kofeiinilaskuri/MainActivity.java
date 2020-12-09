@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         TextView kofeiiniYht = (TextView) findViewById(R.id.yhtKofeiini);
         TextView juomaYht = (TextView) findViewById(R.id.yhtMaara);
         kofeiiniYht.setText(String.valueOf(kofeiini) + " mg.");
-        juomaYht.setText(String.valueOf(juoma) + " g/ml.");
+        juomaYht.setText(String.valueOf(juoma) + " ml tai g.");
         progrBar.setProgress(procent(day));
         text.setText(procent(day) + "%");
     }
