@@ -13,8 +13,9 @@ class GlobalModel {
 
     private GlobalModel() {
 
-        kahvi = new ArrayList<Coffee>();
+        kahvi = new ArrayList<>();
 
+        //name, caffeine per mg, barcode.
         kahvi.add(new Coffee("Black coffee", (float) 0.6, "4056489175803"));
         kahvi.add(new Coffee("Coffee with milk", (float)0.4, "070177084813"));
         kahvi.add(new Coffee("Energy drink", (float)0.54,"6420101884201"));
@@ -31,6 +32,7 @@ class GlobalModel {
     public Coffee getKahvi(int i) { return kahvi.get(i);}
 
 
+    /*matching scanned barcode with barcodes from the ArrayList*/
     public int getIndex(String barcode) {
         String name = "";
         int result = 0;
@@ -41,7 +43,7 @@ class GlobalModel {
                 result = kahvi.indexOf(kahvi.get(i));
             }
         }
-        return result;
+        return result; //return the id of matched product
     }
 
 }
