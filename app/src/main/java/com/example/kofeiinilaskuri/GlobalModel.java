@@ -24,6 +24,7 @@ class GlobalModel {
         kahvi.add(new Coffee("Maitosuklaa", (float)0.17,"6420101884202"));
         kahvi.add(new Coffee("Tumma suklaa", (float)0.55,"6420101884203"));
         kahvi.add(new Coffee("Musta tee", (float)0.17,"6420101884204"));
+        kahvi.add(new Coffee("Vihreä tee", (float)0.20,"6420501884204"));
 
     }
 
