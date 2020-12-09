@@ -6,20 +6,22 @@ public class Energiajuoma {
     private float kofeiininMaara;
     private String viivakoodi;
 
-    public Energiajuoma(String nimi, float kofeiininMaara, String viivakoodi) {
+    public Energiajuoma(String nimi, float kofeiininMaarae, String viivakoodi) {
         this.nimi = nimi;
-        this.kofeiininMaara= this.kofeiininMaara;
+        this.kofeiininMaara= kofeiininMaara;
         this.viivakoodi = viivakoodi;
     }
 
 
-    public String getNimi() {
+    public String getName() {
         return this.nimi;
     }
 
-    public float getKofeiininMaara() { return this.kofeiininMaara; }
+    public float getCaffeine() {
+        return this.kofeiininMaara;
+    }
 
-    public String getViivakoodi() { return this.viivakoodi; }
+    public String getBarcode() { return this.viivakoodi; }
 
 
 

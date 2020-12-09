@@ -3,7 +3,7 @@ package com.example.kofeiinilaskuri;
 public class Coffee {
 
     private String name;
-    private float caffeine; //int or smth
+    private float caffeine;
     private String barcode;
 
     public Coffee(String name, float caffeine, String barcode) {
