@@ -7,16 +7,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.nio.channels.InterruptedByTimeoutException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.util.Calendar;
@@ -37,15 +42,20 @@ public class MainActivity extends AppCompatActivity {
     Date date = calendar.getTime();
     String currentday = new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime());
     private String dayOfTheWeek = currentday;
+    private final String AVAIN = "com.example.kofeiinilaskuri.PROFIILI_KEY";
+    private String liite = "ml";
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        checkFirstTime();
+
         EditText juomanMaara = (EditText) findViewById(R.id.juomanMaara);
         Button tallenna = (Button) findViewById(R.id.tallenna);
         Button scanner = (Button) findViewById(R.id.scanner);
+        ImageView profileButton = (ImageView) findViewById(R.id.profileIcon);
 
         Spinner kahviSpinner = findViewById(R.id.kahviSpinner);
         kahviSpinner.setAdapter(new ArrayAdapter<>(
@@ -61,6 +71,15 @@ public class MainActivity extends AppCompatActivity {
         } else {
             clearData();
         }
+
+
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openProfile();
+
+            }
+        });
 
         tallenna.setOnClickListener(v -> {
             SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
@@ -109,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int kahviSelected = (int)parent.getItemIdAtPosition(position);
                 kahviIndex = kahviSelected;
+                juomanMaara.setHint(tarkistaLiite(kahviIndex));
             }
 
             @Override
@@ -128,14 +148,36 @@ public class MainActivity extends AppCompatActivity {
     private void Update() {
         TextView kofeiiniYht = (TextView) findViewById(R.id.yhtKofeiini);
         TextView juomaYht = (TextView) findViewById(R.id.yhtMaara);
+        gOrMl();
         kofeiiniYht.setText(String.valueOf(kofeiini) + " mg.");
-        juomaYht.setText(String.valueOf(juoma) + " g/ml.");
+        juomaYht.setText(String.valueOf(juoma) + liite);
         progrBar.setProgress(procent(day));
         text.setText(procent(day) + "%");
+        if (day > 400){
+            showToast();
+        }
+    }
+    private void showToast(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast,(ViewGroup) findViewById(R.id.toast_layout));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER_VERTICAL,0,0);
+        toast.setDuration((Toast.LENGTH_SHORT));
+        toast.setView(layout);
+        toast.show();
     }
 
     private void setScanner() {
         Intent intent = new Intent(this, barcodeReader.class);
+        startActivity(intent);
+    }
+    private void openProfile(){
+        int prog = progrBar.getProgress();
+        String perc = text.getText().toString();
+        Intent intent = new Intent(this, Profiili.class);
+        intent.putExtra("EXTRA_PROG",prog);
+        intent.putExtra("EXTRA_PERC",perc);
+        intent.putExtra("EXTRA_CAF",String.valueOf(day));
         startActivity(intent);
     }
 
@@ -178,5 +220,37 @@ public class MainActivity extends AppCompatActivity {
         sp.edit().remove("maara");
         sp.edit().remove("allKofeiini");
     }
+
+
+    private void checkFirstTime(){
+        SharedPreferences sp = getSharedPreferences(AVAIN,Context.MODE_PRIVATE);
+        boolean first = sp.getBoolean("FIRST_TIME", true);
+        if (first){
+            Intent intent = new Intent(this, UserConfig.class);
+            startActivity(intent);
+        }
+
+
+
+
+    }
+    public void gOrMl(){
+        String index = GlobalModel.getInstance().getKahvi(kahviIndex).getName();
+        if(index.contains("suklaa")){
+            liite = " g";
+        } else {
+            liite = " ml";
+        }
+
+
+    }
+    public String tarkistaLiite(int index){
+        if (index == 6 || index == 7){
+            return "g";
+        } else {
+            return "ml";
+        }
+    }
+
 
 }

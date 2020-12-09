@@ -20,12 +20,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <TextView
         android:id="@+id/text_view_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0%"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
         app:layout_constraintEnd_toEndOf="@+id/progress_bar"
@@ -46,27 +46,27 @@
     <!--        app:layout_constraintTop_toTopOf="parent"-->
     <!--        app:layout_constraintVertical_bias="0.91" />-->
 
-<!--    <Button-->
-<!--        android:id="@+id/kahviNappi"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="5dp"-->
-<!--        android:layout_marginBottom="165dp"-->
-<!--        android:text="Kahvilaskuriin"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="1.0" />-->
+    <!--    <Button-->
+    <!--        android:id="@+id/kahviNappi"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="5dp"-->
+    <!--        android:layout_marginBottom="165dp"-->
+    <!--        android:text="Kahvilaskuriin"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="1.0" />-->
 
     <Button
         android:id="@+id/tallenna"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
+        android:layout_marginStart="70dp"
         android:layout_marginBottom="4dp"
-        android:text="Save"
+        android:text="Tallenna"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/juomanMaara"
@@ -78,7 +78,9 @@
         android:layout_height="31dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="76dp"
-        android:text="0 mg"
+        android:text="0 mg."
+        android:textSize="15dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
 
@@ -86,9 +88,11 @@
         android:id="@+id/yhtMaara"
         android:layout_width="106dp"
         android:layout_height="27dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="52dp"
-        android:text="0 g/ml"
+        android:text="0 ml tai g."
+        android:textSize="15dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/yhtKofeiini" />
 
@@ -98,7 +102,7 @@
         android:layout_height="61dp"
         android:layout_marginTop="140dp"
         android:ems="10"
-        android:hint="g/ml"
+        android:hint="ml tai g"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -119,9 +123,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Caffeine in the last portion:"
+        android:text="Kofeiinia viime annoksessa:"
+        android:textSize="15dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/yhtKofeiini"
-        app:layout_constraintHorizontal_bias="0.855"
+        app:layout_constraintHorizontal_bias="0.846"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
 
@@ -129,11 +135,13 @@
         android:id="@+id/tvPortion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="16dp"
-        android:text="Last portion size:"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="12dp"
+        android:text="Viimeisin annos:"
+        android:textSize="15dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/yhtMaara"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.843"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvConsumed" />
 
@@ -141,11 +149,11 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your daily consumption:"
+        android:layout_marginStart="103dp"
+        android:text="Päivän kofeiinin kulutus:"
+        android:textStyle="bold"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/progress_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.634" />
@@ -154,13 +162,35 @@
         android:id="@+id/scanner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:text="Scanner"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="70dp"
+        android:text="Skanneri"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toEndOf="@+id/tallenna"
         app:layout_constraintTop_toBottomOf="@+id/juomanMaara"
         app:layout_constraintVertical_bias="0.199" />
+
+    <ImageView
+        android:id="@+id/profileIcon"
+        android:layout_width="57dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/usericon" />
+
+    <ImageView
+        android:id="@+id/infoIcon"
+        android:layout_width="54dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/infoicon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
