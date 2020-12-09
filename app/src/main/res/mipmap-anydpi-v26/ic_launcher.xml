@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@color/ic_launcher_background"/>
-    <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+    <background android:drawable="@drawable/ic_launcher_background"/>
+    <foreground android:drawable="@drawable/ic_launcher_foreground"/>
 
 <!--    https://www.flaticon.com/free-icon/coffee-beans_3105142?term=coffee&page=1&position=36&related_item_id=3105142-->
 </adaptive-icon>

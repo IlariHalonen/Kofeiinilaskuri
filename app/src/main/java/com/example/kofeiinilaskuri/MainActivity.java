@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
         sp.edit().remove("allKofeiini");
     }
 
-
+    /*clears the data*/
     private void checkFirstTime(){
         SharedPreferences sp = getSharedPreferences(AVAIN,Context.MODE_PRIVATE);
         boolean first = sp.getBoolean("FIRST_TIME", true);
