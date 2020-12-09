@@ -75,9 +75,55 @@
         android:layout_marginTop="188dp"
         android:text="Valmis!"
         android:textSize="24sp"
+        app:iconPadding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/kayttajanIka" />
+
+    <Switch
+        android:id="@+id/miesNainen"
+        android:layout_width="58dp"
+        android:layout_height="50dp"
+        android:checked="false"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:textAlignment="center"
+        android:textDirection="firstStrong"
+        android:textSize="18sp"
+        android:thumbTint="#FFFFFF"
+        android:trackTint="#61B9FF"
+        app:layout_constraintBottom_toTopOf="@+id/button_valmis"
+        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/kayttajanIka"
+        app:layout_constraintVertical_bias="0.105" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mies"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_valmis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/miesNainen"
+        app:layout_constraintTop_toBottomOf="@+id/kayttajanIka"
+        app:layout_constraintVertical_bias="0.137" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nainen"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_valmis"
+        app:layout_constraintEnd_toStartOf="@+id/miesNainen"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ok"
+        app:layout_constraintVertical_bias="0.141" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
