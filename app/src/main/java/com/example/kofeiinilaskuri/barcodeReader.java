@@ -128,11 +128,12 @@ public class barcodeReader extends AppCompatActivity {
         initialiseDetectorsAndSources();
     }
 
+    /*returning to the main page*/
     private void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
 }
-
+//Used code:
 //https://medium.com/analytics-vidhya/creating-a-barcode-scanner-using-android-studio-71cff11800a2
