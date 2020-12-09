@@ -6,9 +6,9 @@ public class Energiajuoma {
     private float kofeiininMaara;
     private String viivakoodi;
 
-    public Energiajuoma(String nimi, float kofeiininMaarae, String viivakoodi) {
+    public Energiajuoma(String nimi, float kofeiininMaara, String viivakoodi) {
         this.nimi = nimi;
-        this.kofeiininMaara= kofeiininMaara;
+        this.kofeiininMaara= this.kofeiininMaara;
         this.viivakoodi = viivakoodi;
     }
 
