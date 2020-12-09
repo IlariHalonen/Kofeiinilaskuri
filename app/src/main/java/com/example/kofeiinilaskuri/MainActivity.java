@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,8 +17,6 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
 
 import java.nio.channels.InterruptedByTimeoutException;
 import java.text.SimpleDateFormat;
@@ -45,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private final String AVAIN = "com.example.kofeiinilaskuri.PROFIILI_KEY";
     private String liite = "ml";
 
-
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -67,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
         progrBar = (ProgressBar) findViewById(R.id.progress_bar);
         text = (TextView) findViewById(R.id.text_view_progress);
 
-        if (checkDay(dayOfTheWeek)) {
-            grabValues();
+        if(checkDay(dayOfTheWeek)) {
+           grabValues();
         } else {
             clearData();
         }
@@ -85,49 +81,49 @@ public class MainActivity extends AppCompatActivity {
         tallenna.setOnClickListener(v -> {
             SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
-            if (barcode != "") {
+                if( barcode != "") {
 
-                int kofeiiniIndex = GlobalModel.getInstance().getIndex(barcode);
-                Calendar calendar = Calendar.getInstance();
-                Date date = calendar.getTime();
-                String currentday = new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime());
-                kofeiiniFloat = GlobalModel.getInstance().getKahvi(kofeiiniIndex).getCaffeine();
-                juoma = Integer.parseInt(juomanMaara.getText().toString());
-                kofeiini = kofeiiniCalculation(kofeiiniFloat, juoma);
-                day = day + kofeiini;
-                editor.putInt("kofeiini", kofeiini);
-                editor.putInt("allKofeiini", day);
-                editor.putInt("maara", juoma);
-                editor.putString("currentDay", currentday);
-                editor.apply();
-                barcode = "";
-                Update();
+                    int kofeiiniIndex = GlobalModel.getInstance().getIndex(barcode);
+                    Calendar calendar = Calendar.getInstance();
+                    Date date = calendar.getTime();
+                    String currentday = new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime());
+                    kofeiiniFloat = GlobalModel.getInstance().getKahvi(kofeiiniIndex).getCaffeine();
+                    juoma = Integer.parseInt(juomanMaara.getText().toString());
+                    kofeiini = kofeiiniCalculation(kofeiiniFloat, juoma);
+                    day = day + kofeiini;
+                    editor.putInt("kofeiini",kofeiini);
+                    editor.putInt("allKofeiini", day);
+                    editor.putInt("maara", juoma);
+                    editor.putString("currentDay", currentday);
+                    editor.apply();
+                    barcode = "";
+                    Update();
 
-            } else {
-                Calendar calendar = Calendar.getInstance();
-                Date date = calendar.getTime();
-                String currentday = new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime());
-                dayOfTheWeek = currentday;
-                kofeiiniFloat = GlobalModel.getInstance().getKahvi(kahviIndex).getCaffeine();
-                juoma = Integer.parseInt(juomanMaara.getText().toString());
-                kofeiini = kofeiiniCalculation(kofeiiniFloat, juoma);
-                day = day + kofeiini;
-                editor.putInt("kofeiini", kofeiini);
-                editor.putInt("allKofeiini", day);
-                editor.putInt("maara", juoma);
-                editor.putString("currentDay", currentday);
-                editor.apply();
-                Update();
-            }
+                } else {
+                    Calendar calendar = Calendar.getInstance();
+                    Date date = calendar.getTime();
+                    String currentday = new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime());
+                    dayOfTheWeek = currentday;
+                    kofeiiniFloat = GlobalModel.getInstance().getKahvi(kahviIndex).getCaffeine();
+                    juoma = Integer.parseInt(juomanMaara.getText().toString());
+                    kofeiini = kofeiiniCalculation(kofeiiniFloat, juoma);
+                    day = day + kofeiini;
+                    editor.putInt("kofeiini",kofeiini);
+                    editor.putInt("allKofeiini", day);
+                    editor.putInt("maara", juoma);
+                    editor.putString("currentDay", currentday);
+                    editor.apply();
+                    Update();
+                }
 
             juomanMaara.setText("");
-            Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Saved!",Toast.LENGTH_SHORT).show();
         });
 
         kahviSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int kahviSelected = (int) parent.getItemIdAtPosition(position);
+                int kahviSelected = (int)parent.getItemIdAtPosition(position);
                 kahviIndex = kahviSelected;
                 juomanMaara.setHint(tarkistaLiite(kahviIndex));
             }
@@ -160,14 +156,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, barcodeReader.class);
         startActivity(intent);
     }
-
-    private void openProfile() {
+    private void openProfile(){
         int prog = progrBar.getProgress();
         String perc = text.getText().toString();
         Intent intent = new Intent(this, Profiili.class);
-        intent.putExtra("EXTRA_PROG", prog);
-        intent.putExtra("EXTRA_PERC", perc);
-        intent.putExtra("EXTRA_CAF", String.valueOf(day));
+        intent.putExtra("EXTRA_PROG",prog);
+        intent.putExtra("EXTRA_PERC",perc);
+        intent.putExtra("EXTRA_CAF",String.valueOf(day));
         startActivity(intent);
     }
 
@@ -176,13 +171,13 @@ public class MainActivity extends AppCompatActivity {
         return index;
     }
 
-    private int kofeiiniCalculation(float f, int a) {
-        int kofeiini = (int) (a * f);
+    private int kofeiiniCalculation(float f, int a){
+        int kofeiini = (int)(a * f);
         return kofeiini;
     }
 
-    private int procent(int a) {
-        a = a * 100 / 400;
+    private int procent(int a){
+        a = a*100/400;
         return a;
     }
 
@@ -190,14 +185,14 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
         kofeiini = sp.getInt("kofeiini", 0);
         juoma = sp.getInt("maara", 0);
-        day = sp.getInt("allKofeiini", 0);
+        day = sp.getInt("allKofeiini",0);
         Update();
     }
 
     private boolean checkDay(String a) {
         boolean result = false;
         SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
-        if (a.equals(sp.getString("currentDay", ""))) {
+        if(a.equals(sp.getString("currentDay", ""))) {
             result = true;
         }
         return result;
@@ -205,27 +200,28 @@ public class MainActivity extends AppCompatActivity {
 
     private void clearData() {
         SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
-        sp.edit().remove("currentDay").apply();
-        sp.edit().remove("kofeiini").apply();
-        sp.edit().remove("maara").apply();
-        sp.edit().remove("allKofeiini").apply();
+        sp.edit().remove("currentDay");
+        sp.edit().remove("kofeiini");
+        sp.edit().remove("maara");
+        sp.edit().remove("allKofeiini");
     }
 
 
-    private void checkFirstTime() {
-        SharedPreferences sp = getSharedPreferences(AVAIN, Context.MODE_PRIVATE);
+    private void checkFirstTime(){
+        SharedPreferences sp = getSharedPreferences(AVAIN,Context.MODE_PRIVATE);
         boolean first = sp.getBoolean("FIRST_TIME", true);
-        if (first) {
+        if (first){
             Intent intent = new Intent(this, UserConfig.class);
             startActivity(intent);
         }
 
 
-    }
 
-    public void gOrMl() {
+
+    }
+    public void gOrMl(){
         String index = GlobalModel.getInstance().getKahvi(kahviIndex).getName();
-        if (index.contains("suklaa")) {
+        if(index.contains("suklaa")){
             liite = " g";
         } else {
             liite = " ml";
@@ -233,16 +229,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-    public String tarkistaLiite(int index) {
-        if (index == 3 || index == 4) {
+    public String tarkistaLiite(int index){
+        if (index == 3 || index == 4){
             return "g";
         } else {
             return "ml";
         }
     }
 
+
 }
-
-
-
