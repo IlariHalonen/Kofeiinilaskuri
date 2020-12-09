@@ -7,7 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -150,6 +153,18 @@ public class MainActivity extends AppCompatActivity {
         juomaYht.setText(String.valueOf(juoma) + liite);
         progrBar.setProgress(procent(day));
         text.setText(procent(day) + "%");
+        if (day > 400){
+            showToast();
+        }
+    }
+    private void showToast(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast,(ViewGroup) findViewById(R.id.toast_layout));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER_VERTICAL,0,0);
+        toast.setDuration((Toast.LENGTH_SHORT));
+        toast.setView(layout);
+        toast.show();
     }
 
     private void setScanner() {
