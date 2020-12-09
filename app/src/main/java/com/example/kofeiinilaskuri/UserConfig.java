@@ -22,11 +22,9 @@ public class UserConfig extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_config);
-        SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
-        boolean first = sp.getBoolean("FIRST_TIME", true);
-        if (!first){
-            finish();
-        }
+        SharedPreferences sp = getSharedPreferences(AVAIN,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("FIRST_TIME", false).commit();
 
         Button namiska = (Button) findViewById(R.id.button_valmis);
         namiska.setOnClickListener(new View.OnClickListener() {

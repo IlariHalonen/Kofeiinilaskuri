@@ -154,7 +154,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void openProfile(){
+        int prog = progrBar.getProgress();
+        String perc = text.getText().toString();
         Intent intent = new Intent(this, Profiili.class);
+        intent.putExtra("EXTRA_PROG",prog);
+        intent.putExtra("EXTRA_PERC",perc);
         startActivity(intent);
     }
 
@@ -198,14 +202,20 @@ public class MainActivity extends AppCompatActivity {
         sp.edit().remove("allKofeiini");
     }
 
+
     private void checkFirstTime(){
-        SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
-        boolean first = sp.getBoolean("FIRST_TIME", false);
-        if (!first){
+        SharedPreferences sp = getSharedPreferences(AVAIN,Context.MODE_PRIVATE);
+        boolean first = sp.getBoolean("FIRST_TIME", true);
+        if (first){
             Intent intent = new Intent(this, UserConfig.class);
             startActivity(intent);
         }
 
+
+
+
     }
+
+
 
 }
