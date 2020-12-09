@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public String tarkistaLiite(int index){
-        if (index == 3 || index == 4){
+        if (index == 6 || index == 7){
             return "g";
         } else {
             return "ml";
