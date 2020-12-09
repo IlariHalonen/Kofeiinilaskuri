@@ -14,7 +14,7 @@ public class Profiili extends AppCompatActivity {
     private final String AVAIN = "com.example.kofeiinilaskuri.PROFIILI_KEY";
     private int prog = 0;
     private String perc;
-
+    private String kofeiiniPv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +30,12 @@ public class Profiili extends AppCompatActivity {
 
         ProgressBar progBar = (ProgressBar) findViewById(R.id.progress_bar_prof);
         TextView percent = (TextView) findViewById(R.id.percent);
+        TextView millig = (TextView) findViewById(R.id.textView3);
 
         Kayttaja kayttaja = new Kayttaja(ika, nimi);
         progBar.setProgress(prog);
         percent.setText(perc);
-
-
+        millig.setText("Tänään nautittu: "+ kofeiiniPv + " mg kofeiinia.");
 
 
     }
@@ -44,6 +44,7 @@ public class Profiili extends AppCompatActivity {
         if (extras != null){
             prog = extras.getInt("EXTRA_PROG");
             perc = extras.getString("EXTRA_PERC");
+            kofeiiniPv = extras.getString("EXTRA_CAF");
         }
     }
 
