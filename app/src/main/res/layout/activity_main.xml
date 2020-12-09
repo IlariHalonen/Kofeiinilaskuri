@@ -20,7 +20,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <TextView
         android:id="@+id/text_view_progress"
         android:layout_width="wrap_content"
@@ -46,19 +45,19 @@
     <!--        app:layout_constraintTop_toTopOf="parent"-->
     <!--        app:layout_constraintVertical_bias="0.91" />-->
 
-<!--    <Button-->
-<!--        android:id="@+id/kahviNappi"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="5dp"-->
-<!--        android:layout_marginBottom="165dp"-->
-<!--        android:text="Kahvilaskuriin"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="1.0" />-->
+    <!--    <Button-->
+    <!--        android:id="@+id/kahviNappi"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="5dp"-->
+    <!--        android:layout_marginBottom="165dp"-->
+    <!--        android:text="Kahvilaskuriin"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="1.0" />-->
 
     <Button
         android:id="@+id/tallenna"
@@ -141,11 +140,10 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="103dp"
         android:text="Your daily consumption:"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/progress_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.634" />
@@ -165,14 +163,23 @@
 
     <ImageView
         android:id="@+id/profileIcon"
-        android:layout_width="78dp"
-        android:layout_height="81dp"
+        android:layout_width="71dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.951"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scanner"
-        app:layout_constraintVertical_bias="0.809"
         app:srcCompat="@drawable/usericon" />
+
+    <ImageView
+        android:id="@+id/infoIcon"
+        android:layout_width="54dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/infoicon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
