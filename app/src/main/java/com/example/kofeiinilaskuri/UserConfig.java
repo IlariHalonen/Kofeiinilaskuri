@@ -1,5 +1,13 @@
 package com.example.kofeiinilaskuri;
 
+/**
+ * UserConfig.java is only used on the first start.
+ *
+ * @author Ilari
+ * @Version 1.6
+ *
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;

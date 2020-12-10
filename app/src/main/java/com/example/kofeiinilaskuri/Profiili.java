@@ -1,3 +1,8 @@
+/**
+ * @author Ilari
+ * @Version 2.31
+ */
+
 package com.example.kofeiinilaskuri;
 
 import androidx.appcompat.app.AppCompatActivity;

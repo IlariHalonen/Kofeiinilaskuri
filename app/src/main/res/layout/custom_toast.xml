@@ -21,8 +21,8 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="332dp"
-        android:layout_height="28dp"
+        android:layout_width="328dp"
+        android:layout_height="73dp"
         android:text="Suositeltu kofeiinimäärä on ylittynyt!"
         android:textColor="@color/white"
         android:textSize="20sp"

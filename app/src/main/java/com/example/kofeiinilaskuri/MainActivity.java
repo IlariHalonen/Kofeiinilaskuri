@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         if (barcode != ""){
             String drinksunnimi = GlobalModel.getInstance().checkBarcode(barcode);
             float kofeiininMaara = GlobalModel.getInstance().getKahvi(GlobalModel.getInstance().getIndex(barcode)).getCaffeine();
-            scannedName.setText("Viimeksi skannattu: " + drinksunnimi + " Kofeiinia: " + kofeiininMaara + "mg/100ml");
+            scannedName.setText("Viimeksi skannattu: " + drinksunnimi +"\n" + " Kofeiinia: " + kofeiininMaara + "mg/100ml");
             kahviSpinner.setSelection(GlobalModel.getInstance().getIndex(barcode));
         }
         if (checkDay(currentday)) { //if is equal
