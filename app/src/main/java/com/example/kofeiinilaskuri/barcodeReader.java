@@ -30,6 +30,7 @@ public class barcodeReader extends AppCompatActivity {
     private ToneGenerator toneGen1;
     private TextView barcodeText;
     public static String barcodeData = "";
+    private TextView drinkName;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,7 @@ public class barcodeReader extends AppCompatActivity {
         toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC,     100);
         surfaceView = findViewById(R.id.surface_view);
         barcodeText = findViewById(R.id.barcode_text);
+        drinkName = (TextView) findViewById(R.id.drinkName);
     }
 
     private void initialiseDetectorsAndSources() {
@@ -97,12 +99,16 @@ public class barcodeReader extends AppCompatActivity {
                                 barcodeText.removeCallbacks(null);
                                 barcodeData = barcodes.valueAt(0).email.address;
                                 barcodeText.setText(barcodeData);
+                                String name = GlobalModel.getInstance().checkBarcode(barcodeData);
+                                drinkName.setText(name);
                                 toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
                                 backToMain();
                             } else {
 
                                 barcodeData = barcodes.valueAt(0).displayValue;
                                 barcodeText.setText(barcodeData);
+                                String name = GlobalModel.getInstance().checkBarcode(barcodeData);
+                                drinkName.setText(name);
                                 toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
                                 backToMain();
 

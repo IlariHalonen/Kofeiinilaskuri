@@ -12,7 +12,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 public class UserConfig extends AppCompatActivity {
-    private final String AVAIN = "com.example.kofeiinilaskuri.PROFIILI_KEY";
+    private final String AVAIN = "com.example.kofeiinilaskuri.PROFIILI_KEY"; //Key for the memory
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class UserConfig extends AppCompatActivity {
 
 
 
-
+        /*Executes all the methods when the button is pressed*/
         namiska.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,11 +41,13 @@ public class UserConfig extends AppCompatActivity {
 
     }
 
+    /*Toast for leaving a field empty*/
     private void popup(){
         Toast.makeText(getApplicationContext(), "Nimeä tai ikää ei voi jättää tyhjäksi", Toast.LENGTH_SHORT).show();
 
     }
 
+    /*Checks if one of the fields is empty*/
     private boolean isEmpty(){
         EditText kayttajanNimi = (EditText) findViewById(R.id.kayttajanNimi);
         EditText kayttajanIka = (EditText) findViewById(R.id.kayttajanIka);
@@ -56,6 +58,8 @@ public class UserConfig extends AppCompatActivity {
         return false;
 
     }
+
+    /*Loads the MainActivity ans saves all the users data*/
     private void loadMain(){
         EditText kayttajanNimi = (EditText) findViewById(R.id.kayttajanNimi);
         EditText kayttajanIka = (EditText) findViewById(R.id.kayttajanIka);

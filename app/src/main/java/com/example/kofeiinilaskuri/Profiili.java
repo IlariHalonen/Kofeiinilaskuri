@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 public class Profiili extends AppCompatActivity {
-    private final String AVAIN = "com.example.kofeiinilaskuri.PROFIILI_KEY";
+    private final String AVAIN = "com.example.kofeiinilaskuri.PROFIILI_KEY"; //Key for the memory
     private int prog = 0;
     private String perc;
     private String kofeiiniPv;
@@ -20,7 +20,7 @@ public class Profiili extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profiili);
-        getExtras();
+        getExtras(); //void getExtras() is executed in the beginning
 
         SharedPreferences sp = getSharedPreferences(AVAIN,Context.MODE_PRIVATE);
         String nimi = sp.getString("NIMI", "");
@@ -28,17 +28,19 @@ public class Profiili extends AppCompatActivity {
         TextView naytNimi = (TextView) findViewById(R.id.nameField);
         naytNimi.setText(nimi);
 
+        /*Declaring the UI elements*/
         ProgressBar progBar = (ProgressBar) findViewById(R.id.progress_bar_prof);
         TextView percent = (TextView) findViewById(R.id.percent);
         TextView millig = (TextView) findViewById(R.id.textView3);
 
-        Kayttaja kayttaja = new Kayttaja(ika, nimi);
+        /*Sets the percentage and progressbar*/
         progBar.setProgress(prog);
         percent.setText(perc);
         millig.setText("Tänään nautittu: "+ kofeiiniPv + " mg kofeiinia.");
 
 
     }
+    /*Bundles all the extras from the intent*/
     public void getExtras(){
         Bundle extras = getIntent().getExtras();
         if (extras != null){

@@ -26,6 +26,7 @@ class GlobalModel {
         kahvi.add(new Coffee("Musta tee", (float)0.17,"6420101884204"));
         kahvi.add(new Coffee("Vihreä tee", (float)0.20,"6420501884204"));
         kahvi.add(new Coffee("Kofeiinitabletti", (float)100.0,"6420501884204"));
+        kahvi.add(new Coffee("Ice Cold Möljö", (float)0.32, "8711900010311"));
 
     }
 
@@ -47,6 +48,15 @@ class GlobalModel {
             }
         }
         return result;
+    }
+    public String checkBarcode(String barcode){
+        for (int i = 0; kahvi.size() > i; i++){
+            Coffee current = getKahvi(i);
+            if(current.getBarcode().contentEquals(barcode)){
+                return current.getName();
+            }
+        }
+        return "";
     }
 
 }

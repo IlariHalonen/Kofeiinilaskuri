@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
     private String dayOfTheWeek = currentday; //contains today´s date
     private final String AVAIN = "com.example.kofeiinilaskuri.PROFIILI_KEY";
     private String liite = "ml";
+    private TextView scannedName;
+    private Spinner kahviSpinner;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
         Button scanner = (Button) findViewById(R.id.scanner);
         ImageView profileButton = (ImageView) findViewById(R.id.profileIcon);
         ImageView infoButton = (ImageView) findViewById(R.id.infoIcon);
-        Spinner kahviSpinner = findViewById(R.id.kahviSpinner);
+        kahviSpinner = findViewById(R.id.kahviSpinner);
+        scannedName = (TextView) findViewById(R.id.scannedName);
 
         //Connection between ArrayList with data and UI element (dropdown list of items with caffeine)
         kahviSpinner.setAdapter(new ArrayAdapter<>(
@@ -110,17 +113,14 @@ public class MainActivity extends AppCompatActivity {
             if (barcode != "") {
 
                 int kofeiiniIndex = GlobalModel.getInstance().getIndex(barcode); //receives the index of product with matched barcode
-
+                kofeiiniFloat = GlobalModel.getInstance().getKahvi(kofeiiniIndex).getCaffeine(); //receives the index of caffeine of selected product
                 //receiving today's date
                 Calendar calendar = Calendar.getInstance();
                 Date date = calendar.getTime();
                 String currentday = new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime());
-
-                kofeiiniFloat = GlobalModel.getInstance().getKahvi(kofeiiniIndex).getCaffeine(); //receives the index of caffeine of selected product
                 juoma = Integer.parseInt(juomanMaara.getText().toString()); //receives portion size
                 kofeiini = kofeiiniCalculation(kofeiiniFloat, juoma); //receives amount of caffeine
                 day = day + kofeiini; //calculates total amount of consumed caffeine
-
                 //saving data
                 editor.putInt("kofeiini", kofeiini);
                 editor.putInt("allKofeiini", day);
@@ -160,7 +160,8 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int kahviSelected = (int)parent.getItemIdAtPosition(position); //receiving the index of selected product
                 kahviIndex = kahviSelected;
-                juomanMaara.setHint(tarkistaLiite(kahviIndex)); 
+                juomanMaara.setHint(tarkistaLiite(kahviIndex));
+
             }
 
             @Override
@@ -185,6 +186,12 @@ public class MainActivity extends AppCompatActivity {
         Date date = calendar.getTime(); //receiving today´s day and time
         String currentday = new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime()); //simple date format
         super.onResume();
+        if (barcode != ""){
+            String drinksunnimi = GlobalModel.getInstance().checkBarcode(barcode);
+            float kofeiininMaara = GlobalModel.getInstance().getKahvi(GlobalModel.getInstance().getIndex(barcode)).getCaffeine();
+            scannedName.setText("Viimeksi skannattu: " + drinksunnimi + " Kofeiinia: " + kofeiininMaara + "mg/100ml");
+            kahviSpinner.setSelection(GlobalModel.getInstance().getIndex(barcode));
+        }
         if (checkDay(currentday)) { //if is equal
             grabValues(); //save the input date to the existing stack
         } else {
@@ -298,6 +305,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    /*Checks if the product contains the word "suklaa" and changes the prefix accordingly*/
     public void gOrMl(){
         String index = GlobalModel.getInstance().getKahvi(kahviIndex).getName();
         if(index.contains("suklaa")){
@@ -310,6 +318,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    /*Checks the products index and changes the prefix accordingly*/
     public String tarkistaLiite(int index){
         if (index == 6 || index == 7){
             return "g";
