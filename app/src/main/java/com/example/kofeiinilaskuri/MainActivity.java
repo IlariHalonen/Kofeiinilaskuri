@@ -32,7 +32,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     /**
-     *
+     *Variables
      */
 
     private int day = 0; //contains all the caffeine during the day//
@@ -52,13 +52,20 @@ public class MainActivity extends AppCompatActivity {
     private TextView scannedName;
     private Spinner kahviSpinner;
 
+    /**
+     * Called onCreate
+     * @param savedInstanceState
+     */
+
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Connections between private values and UI elements
+        /**
+         * Checks Connections between private values and UI elements
+         */
         checkFirstTime();
 
         EditText juomanMaara = (EditText) findViewById(R.id.juomanMaara);
@@ -86,7 +93,9 @@ public class MainActivity extends AppCompatActivity {
             clearData(); //if the date is not equal - clear data
         }
 
-        /*when the "Save" button is clicked*/
+        /**
+         * Called when the "Save" button is clicked
+         */
 
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +104,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        //info icon is pressed
+        /**
+         * Called when Info icon is pressed
+         */
+
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,13 +115,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        /**
+         * Called when Tallenna button is pressed
+         */
 
         tallenna.setOnClickListener(v -> {
             //creating the storage for data
             SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
 
-            //if barcode value receives data
+            /**
+             * If barcode value receives data
+             */
             if (barcode != "") {
 
                 int kofeiiniIndex = GlobalModel.getInstance().getIndex(barcode); //receives the index of product with matched barcode
@@ -153,7 +170,9 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_SHORT).show(); //Toast message
         });
 
-        //item is selected from the Spinner
+        /**
+         * This method is called when item is selected from the Spinner
+         */
 
         kahviSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -170,7 +189,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Scanner button is pressed
+        /**
+         * Called when scanner button is pressed
+         */
         scanner.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setScanner(); //barcode reader mode opens
@@ -178,6 +199,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * This method is called when onResume
+     */
 
 
     @Override
@@ -200,7 +225,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /*Main page information updating*/
+    /**
+     * This method updates main page information when called
+     */
 
     private void Update() {
         TextView kofeiiniYht = (TextView) findViewById(R.id.yhtKofeiini);
@@ -214,7 +241,11 @@ public class MainActivity extends AppCompatActivity {
             showToast();
         }
     }
-    /*Shows alert toast*/
+
+    /**
+     * This method is called when Int day get value of 400
+     * Shows alert toast
+     */
     private void showToast(){
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.custom_toast,(ViewGroup) findViewById(R.id.toast_layout));
@@ -225,12 +256,17 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
     }
 
-    /*starts new activity (barcode scanner)*/
+    /**
+     * This method starts new activity (barcode scanner)
+     */
     private void setScanner() {
         Intent intent = new Intent(this, barcodeReader.class);
         startActivity(intent);
     }
-    /*starts new activity when profile icon is pressed*/
+
+    /**
+     * This method starts new activity when profile icon is pressed
+     */
     private void openProfile(){
         int prog = progrBar.getProgress();
         String perc = text.getText().toString();
@@ -240,7 +276,10 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("EXTRA_CAF",String.valueOf(day));
         startActivity(intent);
     }
-    /*starts new activity (webview) when info icon is pressed*/
+
+    /**
+     * This method starts new activity (webview) when info icon is pressed
+     */
     private void openInfo(){
         Intent intent = new Intent(this, Info.class);
         startActivity(intent);
@@ -251,19 +290,30 @@ public class MainActivity extends AppCompatActivity {
 //        return index;
 //    }
 
-    /*calculates the exact value of caffeine in portion*/
+    /**
+     * calculates the exact value of caffeine in portion
+     * @param f
+     * @param a
+     * @return Calculation
+     */
     private int kofeiiniCalculation(float f, int a) {
         int kofeiini = (int) (a * f);
         return kofeiini;
     }
 
-    /*calculates the percent of consumed caffeine*/
+    /**
+     * This method calculates the percent of consumed caffeine
+     * @param a
+     * @return Percent of caffeine doze
+     */
     private int procent(int a) {
         a = a * 100 / 400; //400 mg is the maximum recommended doze
         return a;
     }
 
-    /*saving data*/
+    /**
+     * This method Grabs values from shared preferences
+     */
     private void grabValues() {
         SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
         kofeiini = sp.getInt("kofeiini", 0);
@@ -272,7 +322,11 @@ public class MainActivity extends AppCompatActivity {
         Update();
     }
 
-    /*if today's date is equal to the earlier saved date - returns true*/
+    /**
+     * if today's date is equal to the earlier saved date - returns true
+     * @param a
+     * @return Current day
+     */
     private boolean checkDay(String a) {
         boolean result = false;
         SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
@@ -283,7 +337,9 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    /*clears the data*/
+    /**
+     * This method clears the data
+     */
     private void clearData() {
         SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
         sp.edit().remove("currentDay");
@@ -292,7 +348,9 @@ public class MainActivity extends AppCompatActivity {
         sp.edit().remove("allKofeiini");
     }
 
-    /*clears the data*/
+    /**
+     * This is called when opening the app first time to save shared preferences
+     */
     private void checkFirstTime(){
         SharedPreferences sp = getSharedPreferences(AVAIN,Context.MODE_PRIVATE);
         boolean first = sp.getBoolean("FIRST_TIME", true);
@@ -305,7 +363,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    /*Checks if the product contains the word "suklaa" and changes the prefix accordingly*/
+
+    /**
+     * This method checks if the product contains the word "suklaa" and changes the prefix accordingly
+     */
     public void gOrMl(){
         String index = GlobalModel.getInstance().getKahvi(kahviIndex).getName();
         if(index.contains("suklaa")){
@@ -318,7 +379,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    /*Checks the products index and changes the prefix accordingly*/
+
+    /**
+     * This method checks the products index and changes the prefix accordingly
+     * @param index
+     * @return ml, g or kpl
+     */
     public String tarkistaLiite(int index){
         if (index == 6 || index == 7){
             return "g";

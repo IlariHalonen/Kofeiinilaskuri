@@ -22,6 +22,11 @@ import android.widget.Toast;
 public class UserConfig extends AppCompatActivity {
     private final String AVAIN = "com.example.kofeiinilaskuri.PROFIILI_KEY"; //Key for the memory
 
+    /**
+     * Called onCreate
+     * @param savedInstanceState
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +38,9 @@ public class UserConfig extends AppCompatActivity {
         Button namiska = (Button) findViewById(R.id.button_valmis);
 
 
-
-
-        /*Executes all the methods when the button is pressed*/
+        /**
+         * This method executes all the methods when the button is pressed
+         */
         namiska.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,13 +54,18 @@ public class UserConfig extends AppCompatActivity {
 
     }
 
-    /*Toast for leaving a field empty*/
+    /**
+     * Called when leaving a profile field empty
+     */
     private void popup(){
         Toast.makeText(getApplicationContext(), "Nimeä tai ikää ei voi jättää tyhjäksi", Toast.LENGTH_SHORT).show();
 
     }
 
-    /*Checks if one of the fields is empty*/
+    /**
+     * This method Checks if one of the fields is empty
+     * @return If the fields are empty or not
+     */
     private boolean isEmpty(){
         EditText kayttajanNimi = (EditText) findViewById(R.id.kayttajanNimi);
         EditText kayttajanIka = (EditText) findViewById(R.id.kayttajanIka);
@@ -67,7 +77,9 @@ public class UserConfig extends AppCompatActivity {
 
     }
 
-    /*Loads the MainActivity ans saves all the users data*/
+    /**
+     * This method loads the MainActivity ans saves all the users data
+     */
     private void loadMain(){
         EditText kayttajanNimi = (EditText) findViewById(R.id.kayttajanNimi);
         EditText kayttajanIka = (EditText) findViewById(R.id.kayttajanIka);

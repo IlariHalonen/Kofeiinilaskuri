@@ -11,6 +11,10 @@ class GlobalModel {
         return ourInstance;
     }
 
+    /**
+     * Arraylist for coffees and barcodes
+     */
+
     private GlobalModel() {
 
         kahvi = new ArrayList<Coffee>();
@@ -36,7 +40,11 @@ class GlobalModel {
 
     public Coffee getKahvi(int i) { return kahvi.get(i);}
 
-
+    /**
+     * Gets inxed from Arraylist
+     * @param barcode
+     * @return index value
+     */
     public int getIndex(String barcode) {
         String name = "";
         int result = 0;
@@ -49,6 +57,12 @@ class GlobalModel {
         }
         return result;
     }
+
+    /**
+     * This method checks for barcode in Arraylist
+     * @param barcode
+     * @return Name of the Kahvi
+     */
     public String checkBarcode(String barcode){
         for (int i = 0; kahvi.size() > i; i++){
             Coffee current = getKahvi(i);

@@ -13,6 +13,11 @@ public class Info extends AppCompatActivity {
 
     WebView web;
 
+    /**
+     * Called onCreate when pressing info button
+     * @param savedInstanceState
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +29,10 @@ public class Info extends AppCompatActivity {
         web.loadUrl("https://www.terveyskirjasto.fi/terveyskirjasto/tk.koti?p_artikkeli=dlk01123"); //call the url using webview object
 
     }
+
+    /**
+     * Extends for webclient
+     */
 
     private class Callback extends WebViewClient {
         @Override

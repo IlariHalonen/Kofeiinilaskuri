@@ -21,6 +21,11 @@ public class Profiili extends AppCompatActivity {
     private String perc;
     private String kofeiiniPv;
 
+    /**
+     * Called onCreate
+     * @param savedInstanceState
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,19 +38,26 @@ public class Profiili extends AppCompatActivity {
         TextView naytNimi = (TextView) findViewById(R.id.nameField);
         naytNimi.setText(nimi);
 
-        /*Declaring the UI elements*/
+        /**
+         * Declaring the UI elements
+         */
         ProgressBar progBar = (ProgressBar) findViewById(R.id.progress_bar_prof);
         TextView percent = (TextView) findViewById(R.id.percent);
         TextView millig = (TextView) findViewById(R.id.textView3);
 
-        /*Sets the percentage and progressbar*/
+        /**
+         * Sets the percentage and progressbar
+         */
         progBar.setProgress(prog);
         percent.setText(perc);
         millig.setText("Tänään nautittu: "+ kofeiiniPv + " mg kofeiinia.");
 
 
     }
-    /*Bundles all the extras from the intent*/
+
+    /**
+     * Bundles all the extras from the intent
+     */
     public void getExtras(){
         Bundle extras = getIntent().getExtras();
         if (extras != null){

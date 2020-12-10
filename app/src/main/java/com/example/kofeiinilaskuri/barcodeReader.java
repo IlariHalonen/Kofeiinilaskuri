@@ -32,6 +32,11 @@ public class barcodeReader extends AppCompatActivity {
     public static String barcodeData = "";
     private TextView drinkName;
 
+    /**
+     * Called onCreate
+     * @param savedInstanceState
+     */
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.barcode);
@@ -40,6 +45,11 @@ public class barcodeReader extends AppCompatActivity {
         barcodeText = findViewById(R.id.barcode_text);
         drinkName = (TextView) findViewById(R.id.drinkName);
     }
+
+    /**
+     * This methods is called when barcode reader is building
+     * Request camera permission and resolution
+     */
 
     private void initialiseDetectorsAndSources() {
 
@@ -72,17 +82,30 @@ public class barcodeReader extends AppCompatActivity {
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
             }
 
+            /**
+             * This method stops camera
+             * @param holder
+             */
+
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
                 cameraSource.stop();
             }
         });
+        /**
+         * Barcode detector
+         */
 
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
             public void release() {
                  Toast.makeText(getApplicationContext(), "To prevent memory leaks barcode scanner has been stopped", Toast.LENGTH_SHORT).show();
             }
+
+            /**
+             * This method receive barcode data from barccode text
+             * @param detections
+             */
 
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) {
@@ -120,12 +143,20 @@ public class barcodeReader extends AppCompatActivity {
         });
     }
 
+    /**
+     * Called when onPause
+     */
+
     @Override
     protected void onPause() {
         super.onPause();
         getSupportActionBar().hide();
         cameraSource.release();
     }
+
+    /**
+     * Called when onResume
+     */
 
     @Override
     protected void onResume() {
@@ -134,7 +165,9 @@ public class barcodeReader extends AppCompatActivity {
         initialiseDetectorsAndSources();
     }
 
-    /*returning to the main page*/
+    /**
+     * This method is called when returning to the main page
+     */
     private void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
