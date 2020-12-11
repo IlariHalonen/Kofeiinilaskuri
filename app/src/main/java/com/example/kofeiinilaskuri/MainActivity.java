@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      *Variables
+     * @author Miikka, Lera, Niini, Ilari
      */
 
     private int day = 0; //contains all the caffeine during the day//

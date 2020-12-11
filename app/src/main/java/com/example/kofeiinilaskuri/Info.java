@@ -16,6 +16,7 @@ public class Info extends AppCompatActivity {
     /**
      * Called onCreate when pressing info button
      * @param savedInstanceState
+     * @author Niini
      */
 
     @Override

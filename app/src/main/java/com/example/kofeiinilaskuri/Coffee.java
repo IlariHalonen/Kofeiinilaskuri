@@ -2,12 +2,14 @@ package com.example.kofeiinilaskuri;
 
 public class Coffee {
 
+
     private String name;
     private float caffeine;
     private String barcode;
 
     /**
      *
+     * @author Niini, Miikka
      * @param name
      * @param caffeine
      * @param barcode

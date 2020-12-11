@@ -24,6 +24,7 @@ public class Profiili extends AppCompatActivity {
     /**
      * Called onCreate
      * @param savedInstanceState
+     * @author Miikka, Ilari
      */
 
     @Override

@@ -13,6 +13,7 @@ class GlobalModel {
 
     /**
      * Arraylist for coffees and barcodes
+     * @Author Lera, Ilari
      */
 
     private GlobalModel() {

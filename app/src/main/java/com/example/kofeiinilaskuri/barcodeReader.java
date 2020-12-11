@@ -35,6 +35,7 @@ public class barcodeReader extends AppCompatActivity {
     /**
      * Called onCreate
      * @param savedInstanceState
+     * @author Lera
      */
 
     protected void onCreate(Bundle savedInstanceState) {
